@@ -12,7 +12,7 @@ let ExtractJwt = passportJWT.ExtractJwt;
 let JwtStrategy = passportJWT.Strategy;
 
 let jwtOptions = {};
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
 jwtOptions.secretOrKey = process.env.JWT_SECRET;
 
 let strategy = new JwtStrategy(jwtOptions, function (jwt_payload, next) {
